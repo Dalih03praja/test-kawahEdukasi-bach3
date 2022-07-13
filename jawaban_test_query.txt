@@ -1,0 +1,58 @@
+<?php
+// inisialisasi db
+$db_host = 'localhost';
+$db_user = 'root';
+$db_pass = '';
+$db_name = 'kawahedukasi';
+
+//conneksi ke db
+$conn = mysqli_connect($db_host,$db_user,$db_pass,db_name);
+if(!$conn){
+  die ('tidak terkoneksi dengan database'. mysqli_connect_error());
+}
+
+//query
+
+//soal 1
+$sql1 = SELECT MAX(gaji) FROM kawahedukasi;
+$query = mysqli_query($conn, $sql1);
+if(!$query){
+  die ('error SQL: '. mysqli_error($conn));
+}
+//soal 2
+$sql2 = SELECT MAX(gaji) AND MAX(nilai) FROM kawahedukasi WHERE kelas='BACKEND';
+$query1 = mysqli_query($conn, $sql2);
+if(!$query1){
+  die ('error SQL: '. mysqli_error($conn));
+}
+//soal 3
+$sql3 = SELECT count(id) FROM kawahedukasi WHERE kelas='FRONTEND';
+$query2 = mysqli_query($conn, $sql2);
+if(!$query1){
+  die ('error SQL: '. mysqli_error($conn));
+}
+//soal 4
+$sql3 = SELECT MAX(jumlah_kehadiran) AND MAX(nilai) FROM kawahedukasi WHERE kelas='FRONTEND';
+$query2 = mysqli_query($conn, $sql4);
+if(!$query1){
+  die ('error SQL: '. mysqli_error($conn));
+}
+
+
+//tampilkan soal ke-1
+$row=mysqli_fetch_array($query);
+echo 'id'.$row[id].'nama'.$row[nama].'kelas'.$row[kelas].'nilai'.$row[nilai].'jumlah_kehadiran'.$row[jumlah_kehadiran].'status_kelulusan'.$row[status_kelulusan].'status_pekerjaan'.$row[status_pekerjaan].'gaji'.$row[gaji].</br>;
+
+//tampilkan soal ke-2
+$row=mysqli_fetch_array($query1);
+echo 'id'.$row[id].'nama'.$row[nama].'kelas'.$row[kelas].'nilai'.$row[nilai].'jumlah_kehadiran'.$row[jumlah_kehadiran].'status_kelulusan'.$row[status_kelulusan].'status_pekerjaan'.$row[status_pekerjaan].'gaji'.$row[gaji].</br>;
+
+//tampilkan soal ke-3
+$row=mysqli_fetch_array($query2);
+echo 'jumlah_peserta: '.$row[count(id)].'.</br>;
+
+//tampilkan soal ke-4
+$row=mysqli_fetch_array($query3);
+echo 'id'.$row[id].'nama'.$row[nama].'kelas'.$row[kelas].'nilai'.$row[nilai].'jumlah_kehadiran'.$row[jumlah_kehadiran].'status_kelulusan'.$row[status_kelulusan].'status_pekerjaan'.$row[status_pekerjaan].'gaji'.$row[gaji].</br>;
+
+?>
